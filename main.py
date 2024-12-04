@@ -1,87 +1,87 @@
 import itertools
 
+# Define the class schedule details
 classes = [
     {
-        "name": "Probability and Statistics II",
+        "name": "Data Analytics",
         "credits": 3,
         "schedules": [
-            # {"Monday": ["12:00-14:00"], "Friday": ["12:00-14:00"]},
-            {"Tuesday": ["07:00-09:00"], "Thursday": ["07:00-09:00"]},
-            {"Monday": ["15:00-17:00"], "Thursday": ["15:00-17:00"]},
-            {"Monday": ["10:00-12:00"], "Friday": ["10:00-12:00"]},
-            {"Monday": ["09:00-11:00"], "Wednesday": ["09:00-11:00"]}
+            {"Monday": ["13:00-15:00"], "Friday": ["09:00-11:00"]},
+            {"Wednesday": ["07:00-09:00"], "Friday": ["07:00-09:00"]}
         ]
     },
     {
         "name": "Person - Computer Interaction",
         "credits": 3,
         "schedules": [
-            {"Monday": ["14:00-16:00"], "Thursday": ["08:00-10:00"]}
+            {"Monday": ["13:00-15:00"], "Thursday": ["14:00-16:00"]},
+            {"Tuesday": ["14:00-16:00"], "Friday": ["09:00-11:00"]}
         ]
     },
     {
-        "name": "Computer and Microcontroller Arquitecture",
-        "credits": 2,
-        "schedules": [
-            {"Wednesday": ["13:00-16:00"]},
-            {"Thursday": ["14:00-17:00"]},
-            {"Tuesday": ["11:00-14:00"]},
-            {"Wednesday": ["07:00-10:00"]}
-        ]
-    },
-    {
-        "name": "Mobile Development",
+        "name": "IT Infrastructure",
         "credits": 3,
         "schedules": [
-            {"Tuesday": ["17:00-19:00"], "Friday": ["07:00-09:00"]},
-            {"Monday": ["13:00-15:00"], "Thursday": ["09:00-11:00"]},
-            {"Tuesday": ["07:00-09:00"], "Friday": ["07:00-09:00"]}
-        ]
-    },
-    {
-        "name": "Software Design and Arquitecture",
-        "credits": 4,
-        "schedules": [
-            {"Monday": ["16:00-18:00"], "Wednesday": ["16:00-18:00"]},
-            {"Monday": ["07:00-09:00"], "Friday": ["07:00-09:00"]}
-        ]
-    },
-    {
-        "name": "Cybersecurity",
-        "credits": 3,
-        "schedules": [
-            # {"Tuesday": ["16:00-19:00"]}
-        ]
-    },
-    {
-        "name": "Businesses Information and Process Systems",
-        "credits": 3,
-        "schedules": [
-            # {"Wednesday": ["09:00-12:00"]}
+            {"Thursday": ["07:00-10:00"]},
+            {"Tuesday": ["09:00-12:00"]},
+            {"Saturday": ["09:00-12:00"]}
         ]
     },
     {
         "name": "Systemic Thinking",
         "credits": 3,
         "schedules": [
-            # {"Friday": ["12:00-14:00"]}
+            {"Monday": ["15:00-18:00"]}
+        ]
+    },
+    {
+        "name": "Advanced Architectural Patterns",
+        "credits": 3,
+        "schedules": [
+            {"Saturday": ["07:00-10:00"]}
         ]
     },
     {
         "name": "Privacy, Law and Technology",
         "credits": 2,
         "schedules": [
-            {"Friday": ["17:00-19:00"]}
+            {"Monday": ["12:00-14:00"]}
         ]
     },
+    {
+        "name": "IoT",
+        "credits": 2,
+        "schedules": [
+            {"Monday": ["13:00-16:00"]},
+            {"Monday": ["07:00-10:00"]},
+            {"Wednesday": ["09:00-12:00"]},
+            {"Tuesday": ["09:00-12:00"]}
+        ]
+    },
+    {
+        "name": "Software Projects",
+        "credits": 3,
+        "schedules": [
+            {"Saturday": ["10:00-13:00"]}
+        ]
+    },
+    {
+        "name": "Business Creation Seminary",
+        "credits": 2,
+        "schedules": [
+            {"Friday": ["09:00-11:00"]}
+        ]
+    }
 ]
 
 max_credits = 15
-max_gap_minutes = 240
+max_gap_minutes = 120
 max_classes_per_day = 3
 
-mandatory_classes = ["Probability and Statistics II", "Computer and Microcontroller Arquitecture"]
+# Define mandatory classes
+mandatory_classes = ["Data Analytics", "Advanced Architectural Patterns"]
 
+# Helper functions
 def parse_time(time_str):
     start_str, end_str = time_str.split('-')
     start_time = int(start_str[:2]) * 60 + int(start_str[3:])
@@ -101,7 +101,7 @@ def has_collision(schedule1, schedule2):
 
 def calculate_gaps(schedule):
     gaps = []
-    day_times = {day: [] for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]}
+    day_times = {day: [] for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]}
 
     for class_schedule in schedule:
         for day, timings in class_schedule.items():
@@ -120,7 +120,7 @@ def calculate_gaps(schedule):
     return sum(gaps)
 
 def exceeds_max_classes_per_day(schedule, max_classes_per_day):
-    day_counts = {day: 0 for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]}
+    day_counts = {day: 0 for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]}
     
     for class_schedule in schedule:
         for day in class_schedule:
@@ -153,6 +153,7 @@ for r in range(1, len(classes) + 1):
                             if not exceeds_max_classes_per_day(combination, max_classes_per_day):
                                 valid_schedules.append((subset, combination))
 
+# Print the valid schedules
 if valid_schedules:
     for idx, (subset, schedule) in enumerate(valid_schedules):
         print(f"Schedule {idx + 1}:")
@@ -161,18 +162,19 @@ if valid_schedules:
         print("Classes:")
 
         # Collect and print schedules sorted by day
-        day_wise_schedule = {day: [] for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]}
+        day_wise_schedule = {day: [] for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]}
         for class_info, times in zip(subset, schedule):
             for day, timings in times.items():
                 day_wise_schedule[day].append((class_info["name"], timings))
 
-        for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]:
+        # Print schedules for each day including Saturday
+        for day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]:
             if day_wise_schedule[day]:
                 print(f"{day}:")
                 for class_name, timings in day_wise_schedule[day]:
                     print(f"  {class_name}: {', '.join(timings)}")
 
         print(f"Total gap between classes: {calculate_gaps(schedule)} minutes")
-        print("---")
+        print("---------------------------")
 else:
     print("No valid schedules found")
