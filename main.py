@@ -75,8 +75,9 @@ classes = [
 ]
 
 max_credits = 15
-max_gap_minutes = 120
+max_gap_minutes = 60
 max_classes_per_day = 3
+max_days_per_week = 4
 
 # Define mandatory classes
 mandatory_classes = ["Data Analytics", "Advanced Architectural Patterns"]
@@ -128,6 +129,14 @@ def exceeds_max_classes_per_day(schedule, max_classes_per_day):
     
     return any(count > max_classes_per_day for count in day_counts.values())
 
+def count_days_in_schedule(schedule):
+    # Count the distinct days in the schedule
+    days = set()
+    for class_schedule in schedule:
+        for day in class_schedule:
+            days.add(day)
+    return len(days)
+
 # Generate all combinations of classes
 valid_schedules = []
 for r in range(1, len(classes) + 1):
@@ -151,7 +160,9 @@ for r in range(1, len(classes) + 1):
                     if not collision_found:
                         if calculate_gaps(combination) <= max_gap_minutes:
                             if not exceeds_max_classes_per_day(combination, max_classes_per_day):
-                                valid_schedules.append((subset, combination))
+                                # Apply the filter for max days per week
+                                if count_days_in_schedule(combination) <= max_days_per_week:
+                                    valid_schedules.append((subset, combination))
 
 # Print the valid schedules
 if valid_schedules:
