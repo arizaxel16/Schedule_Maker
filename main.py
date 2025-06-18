@@ -74,15 +74,41 @@ classes = [
             {"Tuesday": ["11:00-14:00"]},
         ]
     },
+    {
+        "name": "Seminario Práctica",
+        "credits": 1,
+        "schedules": [
+            {"Tuesday": ["11:00-13:00"]},
+            {"Tuesday": ["07:00-09:00"]},
+            {"Tuesday": ["09:00-11:00"]},
+            {"Tuesday": ["14:00-16:00"]},
+            {"Thursday": ["07:00-09:00"]},
+            {"Thursday": ["11:00-13:00"]},
+        ]
+    },
+    {
+        "name": "Seminario Creación de Empresa",
+        "credits": 2,
+        "schedules": [
+            {"Friday": ["09:00-11:00"]},
+        ]
+    },
+    {
+        "name": "CAPSTONE",
+        "credits": 3,
+        "schedules": [
+            {"Tuesday": ["13:00-15:00"], "Wednesday": ["16:00-18:00"]},
+        ]
+    },
 ]
 
 # Parámetros
 min_credits = 18
 max_credits = 18
-max_gap_minutes = 180
+max_gap_minutes = 240
 max_classes_per_day = 3
 max_days_per_week = 4  # ✅ Filtro nuevo
-mandatory_classes = ["Cyber Security", "CORE"]
+mandatory_classes = ["CORE", "Cyber Security", "Business Architecture"]
 sort_by = "both"  # ✅ Opciones: "gaps", "days", "both"
 
 # Utilidades
@@ -190,7 +216,7 @@ def print_schedule(sched):
     print("-" * 60)
 
 if results:
-    for sched in results[:5]:
+    for sched in results:
         print_schedule(sched)
 else:
     print("⚠️ No valid schedules found.")
