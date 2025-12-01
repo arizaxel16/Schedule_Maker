@@ -4,118 +4,57 @@ WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
 
 classes = [
     {
-        "name": "UX|UI",
+        "name": "IA",
         "credits": 3,
         "schedules": [
-            {"Tuesday": ["08:00-10:00"], "Monday": ["14:00-16:00"]},
-            {"Monday": ["08:00-10:00"], "Tuesday": ["10:00-12:00"]},
-        ]
-    },
-    # {
-    #     "name": "Business Architecture",
-    #     "credits": 3,
-    #     "schedules": [
-    #         {"Saturday": ["07:00-10:00"]},
-    #     ]
-    # },
-    {
-        "name": "IoT",
-        "credits": 2,
-        "schedules": [
-            # {"Monday": ["07:00-10:00"]},
-            {"Monday": ["10:00-13:00"]},
-            # {"Thursday": ["07:00-10:00"]},
-        ]
-    },
-    # {
-    #     "name": "AI",
-    #     "credits": 3,
-    #     "schedules": [
-    #         {"Wednesday": ["08:00-11:00"]},
-    #         {"Tuesday": ["13:00-16:00"]},
-    #     ]
-    # },
-    {
-        "name": "Cyber Security",
-        "credits": 3,
-        "schedules": [
-            # {"Monday": ["10:00-13:00"]},
-            # {"Tuesday": ["09:00-12:00"]},
-            {"Thursday": ["14:00-17:00"]},
-        ]
-    },
-    {
-        "name": "Project Admin",
-        "credits": 2,
-        "schedules": [
-            {"Thursday": ["08:00-10:00"]},
-            {"Thursday": ["10:00-12:00"]},
+            {"Tuesday": ["09:00-12:00"]},
+            {"Tuesday": ["13:00-16:00"]},
         ]
     },
     {
         "name": "Law",
         "credits": 2,
         "schedules": [
-            {"Monday": ["09:00-11:00"]},
+            {"Monday": ["07:00-09:00"]},
+            {"Monday": ["11:00-13:00"]},
             {"Thursday": ["13:00-15:00"]},
         ]
     },
     {
-        "name": "IT",
+        "name": "TI",
         "credits": 4,
         "schedules": [
-            {"Friday": ["14:00-16:00"], "Monday": ["07:00-09:00"]},
-        ]
-    },
-    # {
-    #     "name": "CORE",
-    #     "credits": 3,
-    #     "schedules": [
-    #         {"Tuesday": ["11:00-14:00"]},
-    #     ]
-    # },
-    {
-        "name": "Seminario Práctica",
-        "credits": 1,
-        "schedules": [
-            {"Tuesday": ["11:00-13:00"]},
-            {"Tuesday": ["07:00-09:00"]},
-            {"Tuesday": ["09:00-11:00"]},
-            {"Tuesday": ["14:00-16:00"]},
-            {"Thursday": ["07:00-09:00"]},
-            {"Thursday": ["11:00-13:00"]},
-        ]
-    },
-    {
-        "name": "Seminario Creación de Empresa",
-        "credits": 2,
-        "schedules": [
-            {"Friday": ["09:00-11:00"]},
+            {"Friday": ["09:00-11:00"], "Wednesday": ["09:00-11:00"]},
+            {"Friday": ["07:00-09:00"], "Wednesday": ["07:00-09:00"]},
         ]
     },
     {
         "name": "CAPSTONE",
-        "credits": 3,
+        "credits": 4,
         "schedules": [
-            {"Tuesday": ["13:00-15:00"], "Wednesday": ["16:00-18:00"]},
+            {"Tuesday": ["13:00-15:00"], "Wednesday": ["16:00-18:00"]}
         ]
     },
-    # {
-    #     "name": "AWS",
-    #     "credits": 3,
-    #     "schedules": [
-    #         {"Saturday": ["10:00-13:00"]},
-    #     ]
-    # },
+    {
+        "name": "Business Seminar",
+        "credits": 2,
+        "schedules": [
+            {"Monday": ["09:00-11:00"]},
+            {"Wednesday": ["11:00-13:00"]},
+            {"Friday": ["11:00-13:00"]},
+            {"Wednesday": ["14:00-16:00"]},
+            {"Friday": ["09:00-11:00"]},
+        ]
+    },
 ]
 
 # Parámetros
-min_credits = 9
-max_credits = 9
-max_gap_minutes = 120
+min_credits = 15
+max_credits = 15
+max_gap_minutes = 3000
 max_classes_per_day = 3
-max_days_per_week = 3
-mandatory_classes = ["Cyber Security", "Seminario Creación de Empresa"]
+max_days_per_week = 5
+mandatory_classes = ["IA", "Law", "Business Seminar", "CAPSTONE", "TI"]
 sort_by = "both"
 
 # Utilidades
