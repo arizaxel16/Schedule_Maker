@@ -4,7 +4,7 @@ WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
 
 classes = [
     {
-        "name": "IA",
+        "name": "Fundamentos de la IA",
         "credits": 3,
         "schedules": [
             {"Tuesday": ["09:00-12:00"]},
@@ -12,7 +12,15 @@ classes = [
         ]
     },
     {
-        "name": "Law",
+        "name": "Gestión de Proyectos",
+        "credits": 2,
+        "schedules": [
+            {"Thursday": ["10:00-12:00"]},
+            {"Thursday": ["08:00-10:00"]},
+        ]
+    },
+    {
+        "name": "Ley, Privacidad y Tecnología",
         "credits": 2,
         "schedules": [
             {"Monday": ["07:00-09:00"]},
@@ -21,10 +29,10 @@ classes = [
         ]
     },
     {
-        "name": "TI",
+        "name": "Gestión de Operaciones de TI",
         "credits": 4,
         "schedules": [
-            {"Friday": ["09:00-11:00"], "Wednesday": ["09:00-11:00"]},
+            # {"Friday": ["09:00-11:00"], "Wednesday": ["09:00-11:00"]},
             {"Friday": ["07:00-09:00"], "Wednesday": ["07:00-09:00"]},
         ]
     },
@@ -49,12 +57,12 @@ classes = [
 ]
 
 # Parámetros
-min_credits = 15
-max_credits = 15
-max_gap_minutes = 3000
+min_credits = 17
+max_credits = 17
+max_gap_minutes = 420
 max_classes_per_day = 3
 max_days_per_week = 5
-mandatory_classes = ["IA", "Law", "Business Seminar", "CAPSTONE", "TI"]
+mandatory_classes = ["Fundamentos de la IA", "Gestión de Proyectos", "Ley, Privacidad y Tecnología", "Business Seminar", "CAPSTONE", "Gestión de Operaciones de TI"]
 sort_by = "both"
 
 # Utilidades
